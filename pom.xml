@@ -30,6 +30,7 @@
                 <configuration>
                     <java>
                         <googleJavaFormat/> <!-- Uses Google's Java formatter -->
+                        
                          <!-- Remove unnecessary blank lines and trailing spaces -->
                     <replace>
                         <name>Remove Extra Blank Lines</name>

@@ -27,12 +27,10 @@ public class LogIntest {
   void checkTheUrl() {
 
     driver.get("https://www.google.com");
-
     By textBox = By.name("q");
-    
-    
+
     elementActions.enterText(textBox, "Selenium 4 WebDriver");
-    WebElement searchBox =     driver.findElement(textBox); // Find the element
+    WebElement searchBox = driver.findElement(textBox); // Find the element
     searchBox.submit();
   }
 
