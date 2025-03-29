@@ -1,0 +1,6 @@
+# Eclipse-specific files
+.classpath
+.project
+.settings/
+target/
+test-output/
