@@ -13,7 +13,41 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <build>
+        <plugins>
+	            <!-- Spotless Plugin for Auto Formatting -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.37.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>apply</goal> <!-- This ensures Spotless runs automatically -->
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <java>
+                        <googleJavaFormat/> <!-- Uses Google's Java formatter -->
+                         <!-- Remove unnecessary blank lines and trailing spaces -->
+                    <replace>
+                        <name>Remove Extra Blank Lines</name>
+                        <search>\n{2,}</search>  <!-- Searches for 2+ consecutive blank lines -->
+                        <replacement>\n</replacement> <!-- Replaces them with a single newline -->
+                    </replace>
 
+                    <replace>
+                        <name>Trim Trailing Whitespace</name>
+                        <search>[ \t]+$</search>  <!-- Finds trailing spaces/tabs -->
+                        <replacement></replacement>  <!-- Removes them -->
+                    </replace>
+                    </java>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
   <dependencies>
  <!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
@@ -34,6 +68,7 @@
     <artifactId>selenium-java</artifactId>
     <version>4.28.1</version>
 </dependency>
+
   </dependencies>
 </project>
 
