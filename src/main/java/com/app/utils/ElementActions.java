@@ -1,6 +1,8 @@
 package com.app.utils;
 
 import java.time.Duration;
+import java.util.List;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class ElementActions {
 
   static {
     propertyReader = new PropertyReader("src/main/resources/config.properties");
-    int timeoutInSeconds = Integer.parseInt(propertyReader.getProperty("default.wait.time", "10"));
+    int timeoutInSeconds = Integer.parseInt(propertyReader.getProperty("default.wait.time"));
     defaultTimeout = Duration.ofSeconds(timeoutInSeconds);
   }
 
@@ -30,30 +32,55 @@ public class ElementActions {
     return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
-  public WebElement findElement(By locator) {
+  // Generic method to find an element
+  public WebElement getElement(By locator) {
     return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
+  // Generic method to find multiple elements
+  public List<WebElement> getElements(By locator) {
+    return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+  }
+
+  public WebElement waitForElementToVisible(By locator) {
+    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+  }
+
+  public WebElement waitForElementToBeClickable(By locator) {
+    return wait.until(ExpectedConditions.elementToBeClickable(locator));
+  }
+
   public void clickElement(By locator) {
-    WebElement element = findElement(locator);
+    WebElement element = getElement(locator);
     element.click();
   }
 
   public void enterText(By locator, String text) {
-    WebElement element = findElement(locator);
+    WebElement element = getElement(locator);
     element.clear();
     element.sendKeys(text);
   }
 
   public String getElementText(By locator) {
-    return findElement(locator).getText();
+    return getElement(locator).getText();
   }
 
   public boolean isElementDisplayed(By locator) {
     try {
-      return findElement(locator).isDisplayed();
+      return getElement(locator).isDisplayed();
     } catch (Exception e) {
       return false;
     }
+  }
+
+  public void waitUntilAlertIsDisplayed() {
+    wait.until(ExpectedConditions.alertIsPresent()); // Wait for alert
+  }
+
+  public String getAlertTextAndCloseAlert() {
+    Alert alert = driver.switchTo().alert(); // Switch to alert
+    String alertText = alert.getText(); // Capture alert text
+    alert.accept(); // Click OK to close the alert
+    return alertText;
   }
 }

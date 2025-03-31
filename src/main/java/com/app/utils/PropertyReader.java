@@ -17,11 +17,10 @@ public class PropertyReader {
     }
   }
 
-  public String getProperty(String key, String defaultValue) {
+  public String getProperty(String key) {
     String value = properties.getProperty(key);
     if (value == null) {
-      System.out.println("Missing key in properties file: " + key);
-      return defaultValue;
+      System.out.println("WARNING: Missing key in properties file: " + key);
     }
     return value;
   }

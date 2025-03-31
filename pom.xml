@@ -1,76 +1,94 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.app.test</groupId>
-  <artifactId>Selenium_Java_BoilerPlate</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>com.app.test</groupId>
+	<artifactId>Selenium_Java_BoilerPlate</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>Selenium_Java_BoilerPlate</name>
-  <url>http://maven.apache.org</url>
+	<name>Selenium_Java_BoilerPlate</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <build>
-        <plugins>
-	            <!-- Spotless Plugin for Auto Formatting -->
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.37.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>apply</goal> <!-- This ensures Spotless runs automatically -->
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <java>
-                        <googleJavaFormat/> <!-- Uses Google's Java formatter -->
-                        
-                         <!-- Remove unnecessary blank lines and trailing spaces -->
-                    <replace>
-                        <name>Remove Extra Blank Lines</name>
-                        <search>\n{2,}</search>  <!-- Searches for 2+ consecutive blank lines -->
-                        <replacement>\n</replacement> <!-- Replaces them with a single newline -->
-                    </replace>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<!-- Spotless Plugin for Auto Formatting -->
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.37.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>apply</goal> <!-- This ensures Spotless runs
+							automatically -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<java>
+						<googleJavaFormat /> <!-- Uses Google's Java formatter -->
 
-                    <replace>
-                        <name>Trim Trailing Whitespace</name>
-                        <search>[ \t]+$</search>  <!-- Finds trailing spaces/tabs -->
-                        <replacement></replacement>  <!-- Removes them -->
-                    </replace>
-                    </java>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    
-  <dependencies>
- <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.10.2</version>
-    <scope>test</scope>
-</dependency>
-<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-<dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>5.9.2</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>4.28.1</version>
-</dependency>
+						<!-- Remove unnecessary blank lines and trailing spaces -->
+						<replace>
+							<name>Remove Extra Blank Lines</name>
+							<search>\n{2,}</search>  <!-- Searches for 2+
+							consecutive blank lines -->
+							<replacement>\n</replacement> <!-- Replaces them with
+							a single newline -->
+						</replace>
 
-  </dependencies>
+						<replace>
+							<name>Trim Trailing Whitespace</name>
+							<search>[ \t]+$</search>  <!-- Finds trailing
+							spaces/tabs -->
+							<replacement></replacement>  <!-- Removes them -->
+						</replace>
+					</java>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.24.2</version>  <!-- Use the latest version -->
+			<scope>test</scope>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.28.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+	</dependencies>
 </project>
 
 
