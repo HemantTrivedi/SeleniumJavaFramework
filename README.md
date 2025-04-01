@@ -55,9 +55,8 @@ headless=true
 base.url=https://www.demoblaze.com/index.html
 
 # Timeouts
-implicit.wait=10
-explicit.wait=15
-page.load.timeout=30
+default.wait.time=10
+page.load.timeout=15
 
 ```
 
