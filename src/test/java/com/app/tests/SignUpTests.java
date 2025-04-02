@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.app.pages.LoginSignupModalPage;
 import com.github.javafaker.Faker;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SignUpTests extends BaseTest {
@@ -15,20 +15,21 @@ public class SignUpTests extends BaseTest {
   private String randomPassword;
   LoginSignupModalPage loginPage;
 
-  @BeforeTest
+  @BeforeClass(alwaysRun = true)
   public void setup() throws InterruptedException {
-    // Initialize LoginPage with driver
     loginPage = new LoginSignupModalPage(driver);
     faker = new Faker();
   }
 
-  @BeforeMethod
+  @BeforeMethod(alwaysRun = true)
   public void generateTestData() {
     randomUsername = faker.name().username();
     randomPassword = faker.internet().password();
   }
 
-  @Test(description = "Verify user can successfully sign up")
+  @Test(
+      groups = {"Smoke"},
+      description = "Verify user can successfully sign up")
   public void testSignUp() {
     loginPage.clickSignUp();
     loginPage.signUp(randomUsername, randomPassword);

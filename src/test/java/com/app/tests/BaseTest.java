@@ -3,8 +3,8 @@ package com.app.tests;
 import com.app.base.DriverFactory;
 import com.app.utils.PropertyReader;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
 
@@ -12,7 +12,7 @@ public class BaseTest {
   private static PropertyReader propertyReader;
   String url;
 
-  @BeforeTest
+  @BeforeClass(alwaysRun = true)
   public void customSetup() throws InterruptedException {
 
     propertyReader = new PropertyReader("src/main/resources/config.properties");
@@ -21,7 +21,7 @@ public class BaseTest {
     DriverFactory.goToUrl(url);
   }
 
-  @AfterTest
+  @AfterClass(alwaysRun = true)
   void tearDown() {
     DriverFactory.quiteDriver();
   }
